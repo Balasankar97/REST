@@ -16,12 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+# router = routers.DefaultRouter()
+# router.register('railways',PassengerViewSet)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('student/', include('student_app.urls')),
     path('railways/', include('railways.urls')),
     path('courses/',include('courses.urls')),
+
+    #For routers
+    # path('',include(router.urls))
+
 
 
 ]

@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.views import  APIView
 from django.http import Http404
-from rest_framework import  generics, mixins
+from rest_framework import  generics, mixins, viewsets
 
 '''
 Class Based views
@@ -79,10 +79,17 @@ mixins
 '''
 generics
 '''
-class CoursesListView(generics.ListCreateAPIView):
-    queryset = Courses.objects.all()
-    serializer_class = CourseSerializer
+# class CoursesListView(generics.ListCreateAPIView):
+#     queryset = Courses.objects.all()
+#     serializer_class = CourseSerializer
+#
+# class CoursesDetailView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Courses.objects.all()
+#     serializer_class = CourseSerializer
 
-class CoursesDetailView(generics.RetrieveUpdateDestroyAPIView):
+'''
+viewsets
+'''
+class CourseViewSet(viewsets.ModelViewSet):
     queryset = Courses.objects.all()
     serializer_class = CourseSerializer
