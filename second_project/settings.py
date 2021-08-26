@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'railways',
     'student_app',
+    'courses',
     'rest_framework'
 
 ]
