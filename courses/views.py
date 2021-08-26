@@ -53,25 +53,36 @@ Class Based views
 '''
 mixins
 '''
-class CoursesListView(mixins.ListModelMixin,mixins.CreateModelMixin,generics.GenericAPIView):
+# class CoursesListView(mixins.ListModelMixin,mixins.CreateModelMixin,generics.GenericAPIView):
+#     queryset = Courses.objects.all()
+#     serializer_class = CourseSerializer
+#
+#     def get(self,request):
+#         return self.list(request)
+#
+#     def post(self,request):
+#         return self.create(request)
+#
+# class  CoursesDetailView(mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin,generics.GenericAPIView):
+#     queryset = Courses.objects.all()
+#     serializer_class = CourseSerializer
+#
+#     def get(self,request,pk):
+#         return self.retrieve(request,pk)
+#
+#     def put(self,request,pk):
+#         return self.update(request,pk)
+#
+#     def delete(self,request,pk):
+#         return self.destroy(request,pk)
+
+'''
+generics
+'''
+class CoursesListView(generics.ListCreateAPIView):
     queryset = Courses.objects.all()
     serializer_class = CourseSerializer
 
-    def get(self,request):
-        return self.list(request)
-
-    def post(self,request):
-        return self.create(request)
-
-class  CoursesDetailView(mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin,generics.GenericAPIView):
+class CoursesDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Courses.objects.all()
     serializer_class = CourseSerializer
-
-    def get(self,request,pk):
-        return self.retrieve(request,pk)
-
-    def put(self,request,pk):
-        return self.update(request,pk)
-
-    def delete(self,request,pk):
-        return self.destroy(request,pk)
